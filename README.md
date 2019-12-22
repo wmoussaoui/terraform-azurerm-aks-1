@@ -6,12 +6,12 @@ A Terraform module to create Azure managed Kubernetes cluster into existing subn
 
 #### The simplest example how to use this module
 ```
-module "kyochon" {
-  source               = "yusmadi/aks/azurerm"
-  resource_group_name  = "kyochon-rg"
-  virtual_network_name = "kyochon-vnet"
+module "mycluster" {
+  source               = "ayusmadi/aks/azurerm"
+  resource_group_name  = "mycluster-rg"
+  virtual_network_name = "mycluster-vnet"
   subnet_name          = "subnet1"
-  dns_prefix           = "kyochonaks"
+  dns_prefix           = "myclusteraks"
   client_id            = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   client_secret        = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
@@ -20,19 +20,19 @@ module "kyochon" {
 #### Full example how to use this module
 ```
 module "aks" {
-  source               = "yusmadi/aks/azurerm"
-  resource_group_name  = "kyochon-rg"
-  virtual_network_name = "kyochon-vnet"
+  source               = "ayusmadi/aks/azurerm"
+  resource_group_name  = "mycluster-rg"
+  virtual_network_name = "mycluster-vnet"
   subnet_name          = "subnet1"
-  name                 = "kyochon-aks"
-  dns_prefix           = "kyochonaks"
+  name                 = "mycluster-aks"
+  dns_prefix           = "myclusteraks"
   kubernetes_version   = "1.14.8"
   vm_size              = "Standard_DS1_v2"
   os_disk_size_gb      = 30
   min_count            = 1
   max_count            = 3
   max_pods             = 110
-  admin_username       = "kyochonadmin"
+  admin_username       = "myclusteradmin"
   client_id            = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   client_secret        = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   tag_environment      = "production"

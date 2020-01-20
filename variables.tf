@@ -1,7 +1,9 @@
-variable "resource_group_name" {
-  description = "The name of the existing resource group. Must be unique on your Azure subscription."
+variable "network_resource_group_name" {
+  description = "The name of the existing resource group for AKS Network. Must be unique on your Azure subscription."
 }
-
+variable "aks_resource_group_name" {
+  description = "The name of the existing resource group for AKS. Must be unique on your Azure subscription."
+}
 variable "virtual_network_name" {
   description = "The name of the existing virtual network. Changing this forces a new resource to be created."
 }

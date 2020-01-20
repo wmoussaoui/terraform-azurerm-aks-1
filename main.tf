@@ -2,18 +2,22 @@ provider "azurerm" {
   version = "=1.39.0"
 }
 
-data "azurerm_resource_group" "main" {
-  name = var.resource_group_name
+data "azurerm_resource_group" "network" {
+  name = var.network_resource_group_name
+}
+
+data "azurerm_resource_group" "aks" {
+  name = var.aks_resource_group_name
 }
 
 data "azurerm_virtual_network" "main" {
   name                = var.virtual_network_name
-  resource_group_name = data.azurerm_resource_group.main.name
+  resource_group_name = data.azurerm_resource_group.network.name
 }
 
 data "azurerm_subnet" "main" {
   name                 = var.subnet_name
-  resource_group_name  = data.azurerm_resource_group.main.name
+  resource_group_name  = data.azurerm_resource_group.network.name
   virtual_network_name = data.azurerm_virtual_network.main.name
 }
 
@@ -29,8 +33,8 @@ resource "tls_private_key" "pair" {
 
 resource "azurerm_kubernetes_cluster" "main" {
   name                = var.name
-  location            = data.azurerm_resource_group.main.location
-  resource_group_name = data.azurerm_resource_group.main.name
+  location            = data.azurerm_resource_group.aks.location
+  resource_group_name = data.azurerm_resource_group.aks.name
   dns_prefix          = var.dns_prefix
 
   kubernetes_version = var.kubernetes_version

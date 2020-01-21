@@ -65,7 +65,17 @@ variable "client_secret" {
   description = "The Client Secret for the Service Principal."
 }
 
-variable "tag_environment" {
-  description = "Environment name for tagging"
-  default     = "development"
+#variable "tag_environment" {
+#  description = "Environment name for tagging"
+#  default     = "development"
+#}
+
+variable "tags" {
+  description = "The tags to associate with your network and subnets."
+  type        = "map"
+
+  default = {
+    tag1 = ""
+    tag2 = ""
+  }
 }

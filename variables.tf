@@ -7,6 +7,9 @@ variable "aks_resource_group_name" {
 variable "virtual_network_name" {
   description = "The name of the existing virtual network. Changing this forces a new resource to be created."
 }
+variable "virtual_aks_name" {
+  description = "The name of the existing virtual aks. Changing this forces a new resource to be created."
+}
 
 variable "subnet_name" {
   description = "The name of the existing subnet. Changing this forces a new resource to be created."

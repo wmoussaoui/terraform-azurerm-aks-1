@@ -71,7 +71,5 @@ resource "azurerm_kubernetes_cluster" "main" {
     network_plugin = "azure"
   }
 
-  tags = {
-    environment = var.tags
-  }
+  tags = "${var.tags}"
 }

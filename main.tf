@@ -72,6 +72,6 @@ resource "azurerm_kubernetes_cluster" "main" {
   }
 
   tags = {
-    environment = var.tag_environment
+    environment = var.tags
   }
 }
